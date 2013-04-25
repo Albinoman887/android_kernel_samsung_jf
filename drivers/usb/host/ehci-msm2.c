@@ -540,20 +540,7 @@ static int msm_hsusb_reset(struct msm_hcd *mhcd)
 	return 0;
 }
 
-static void msm_ehci_phy_susp_fail_work(struct work_struct *w)
-{
-	struct msm_hcd *mhcd = container_of(w, struct msm_hcd,
-					phy_susp_fail_work);
-	struct usb_hcd *hcd = mhcd_to_hcd(mhcd);
-
-	msm_ehci_vbus_power(mhcd, 0);
-	usb_remove_hcd(hcd);
-	msm_hsusb_reset(mhcd);
-	usb_add_hcd(hcd, hcd->irq, IRQF_SHARED);
-	msm_ehci_vbus_power(mhcd, 1);
-}
-
-#define PHY_SUSPEND_TIMEOUT_USEC	(500 * 1000)
+#define PHY_SUSPEND_TIMEOUT_USEC	(120 * 1000)
 #define PHY_RESUME_TIMEOUT_USEC		(100 * 1000)
 
 #ifdef CONFIG_PM_SLEEP
