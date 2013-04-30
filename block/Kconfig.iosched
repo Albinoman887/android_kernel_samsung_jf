@@ -132,7 +132,7 @@ choice
 
 	config DEFAULT_ROW
 		bool "ROW" if IOSCHED_ROW=y
-		help
+		help 
 		  The ROW I/O scheduler gives priority to READ requests
 		  over the WRITE requests when dispatching, without starving
 		  WRITE requests. Requests are kept in priority queues.
@@ -157,6 +157,9 @@ choice
 
 	config DEFAULT_FIOPS
 		bool "FIOPS" if IOSCHED_FIOPS=y
+
+	config DEFAULT_BFQ 
+		bool "BFQ" if IOSCHED_BFQ=y
 
 endchoice
 
