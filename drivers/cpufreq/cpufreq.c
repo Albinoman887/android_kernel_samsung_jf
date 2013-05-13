@@ -836,6 +836,7 @@ static int cpufreq_add_dev_policy(unsigned int cpu,
 		cpu, policy->min, policy->max);
 #endif
 
+
 	for_each_cpu(j, policy->cpus) {
 		struct cpufreq_policy *managed_policy;
 
@@ -1060,6 +1061,7 @@ static int cpufreq_add_dev(struct device *dev, struct subsys_interface *sif)
 	INIT_WORK(&policy->update, handle_update);
 
 	/* Set governor before ->init, so that driver could check it */
++/*
 #ifdef CONFIG_HOTPLUG_CPU
 	for_each_online_cpu(sibling) {
 		struct cpufreq_policy *cp = per_cpu(cpufreq_cpu_data, sibling);
@@ -1076,6 +1078,7 @@ static int cpufreq_add_dev(struct device *dev, struct subsys_interface *sif)
 		}
 	}
 #endif
++*/
 	if (!found)
 		policy->governor = CPUFREQ_DEFAULT_GOVERNOR;
 	/* call driver. From then on the cpufreq must be able
