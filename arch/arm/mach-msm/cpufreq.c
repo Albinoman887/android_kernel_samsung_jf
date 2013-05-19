@@ -32,7 +32,7 @@
 
 #include "acpuclock.h"
 
-#define SEC_DVFS 2160000
+#define SEC_DVFS 2106000
 
 struct cpufreq_work_struct {
 	struct work_struct work;
